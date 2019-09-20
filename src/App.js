@@ -5,6 +5,8 @@ import {Button, Card, CardSection, Header} from './components/common';
 class App extends Component {
   state = {switchOn: false, errors: ''};
 
+  Ip() { return '207' }
+
   renderSwitch() {
     switch (this.state.switchOn) {
       case false:
@@ -15,21 +17,21 @@ class App extends Component {
   }
 
   strobeSwitch() {
-    fetch('http://172.17.1.207:3000/strobe')
+    fetch(`http://172.17.1.${this.Ip()}:3000/strobe`)
       .then(jsonData => {
         this.setState({switchOn: false});
       })
   }
 
   turnSwitchOn() {
-    fetch('http://172.17.1.207:3000/on')
+    fetch(`http://172.17.1.${this.Ip()}:3000/on`)
       .then(jsonData => {
         this.setState({switchOn: true});
     });
   }
 
   turnSwitchOff() {
-    fetch('http://172.17.1.207:3000/off').then(jsonData => {
+    fetch(`http://172.17.1.${this.Ip()}:3000/off`).then(jsonData => {
       this.setState({switchOn: false});
     });
   }
