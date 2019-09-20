@@ -15,24 +15,23 @@ class App extends Component {
   }
 
   strobeSwitch() {
-    fetch('http://172.17.1.103:3000/strobe')
+    fetch('http://172.17.1.207:3000/strobe')
       .then(jsonData => {
         this.setState({switchOn: false});
       })
   }
 
   turnSwitchOn() {
-    fetch('http://172.17.1.103:3000/on')
+    fetch('http://172.17.1.207:3000/on')
       .then(jsonData => {
         this.setState({switchOn: true});
-      })
+    });
   }
 
   turnSwitchOff() {
-    fetch('http://172.17.1.103:3000/off')
-      .then(jsonData => {
-        this.setState({switchOn: false});
-      })
+    fetch('http://172.17.1.207:3000/off').then(jsonData => {
+      this.setState({switchOn: false});
+    });
   }
 
   render() {
